@@ -33,10 +33,7 @@ implements Serializable
 	
 	@Column(name = "name", nullable = false, length = 40)
 	private String name;
-	
-	@Column(name = "rentalPricePerDay")
-	private BigDecimal rentalPricePerDay;
-	
+
 	@Column(name = "minRentalTerm", nullable = false)
 	private int minRentalTerm;
 	
@@ -84,17 +81,7 @@ implements Serializable
 	{
 		this.name = name;
 	}
-	
-	public BigDecimal getRentalPricePerDay()
-	{
-		return rentalPricePerDay;
-	}
-	
-	public void setRentalPricePerDay(BigDecimal price)
-	{
-		rentalPricePerDay = price;
-	}
-	
+
 	public int getMinRentalTerm()
 	{
 		return minRentalTerm;
