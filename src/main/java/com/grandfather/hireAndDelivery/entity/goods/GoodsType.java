@@ -15,7 +15,7 @@ implements Serializable
 	private static final long serialVersionUID = -4501158318295062855L;
 	
 	@Id
-	@Column(name = "name", length = 20)
+	@Column(name = "name", length = 30)
 	private String name;
 	
 	public GoodsType() {}

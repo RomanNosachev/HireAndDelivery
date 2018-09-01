@@ -1,7 +1,6 @@
 package com.grandfather.hireAndDelivery.entity.client;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +37,7 @@ implements Serializable
 	private String address;
 	
 	@Column(name = "telephoneNumber", nullable = false, length = 12)
-	private List<String> telephoneNumbers;
+	private String telephoneNumber;
 	
 	@Column(name = "email", length = 20)
 	private String email;
@@ -105,14 +104,14 @@ implements Serializable
 		this.address = address;
 	}
 
-	public List<String> getTelephoneNumbers()
+	public String getTelephoneNumber()
 	{
-		return telephoneNumbers;
+		return telephoneNumber;
 	}
 
-	public void setTelephoneNumbers(List<String> telephoneNumbers)
+	public void setTelephoneNumber(String telephoneNumber)
 	{
-		this.telephoneNumbers = telephoneNumbers;
+		this.telephoneNumber = telephoneNumber;
 	}
 
 	public String getEmail()

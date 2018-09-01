@@ -2,9 +2,12 @@ package com.grandfather.hireAndDelivery.entity.goods;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -18,21 +21,22 @@ implements Serializable
 	private static final long serialVersionUID = -3389201016130002625L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id", unique = true, nullable = false)
 	private long id;
 	
 	@ManyToMany
 	@JoinColumn(name = "goods", nullable = false)
-	private Goods goods;
+	private List<Goods> goods;
 	
-	@Column(name = "daysCount", nullable = false)
-	private int daysCount;
+	@Column(name = "rentalPeriod", nullable = false)
+	private int rentalPeriod = 1;
 	
 	@Column(name = "pricePerPeriod", nullable = false)
 	private BigDecimal pricePerPeriod;
 	
 	@Column(name = "withPledge", nullable = false)
-	private boolean withPledge;
+	private boolean withPledge = true;
 	
 	public Tariff() {}
 
@@ -46,24 +50,24 @@ implements Serializable
 		this.id = id;
 	}
 
-	public Goods getGoods()
+	public List<Goods> getGoods()
 	{
 		return goods;
 	}
 
-	public void setGoods(Goods goods)
+	public void setGoods(List<Goods> goods)
 	{
 		this.goods = goods;
 	}
 
-	public int getDaysCount()
+	public int getRentalPeriod()
 	{
-		return daysCount;
+		return rentalPeriod;
 	}
 
-	public void setDaysCount(int daysCount)
+	public void setRentalPeriod(int daysCount)
 	{
-		this.daysCount = daysCount;
+		this.rentalPeriod = daysCount;
 	}
 
 	public BigDecimal getPricePerPeriod()
