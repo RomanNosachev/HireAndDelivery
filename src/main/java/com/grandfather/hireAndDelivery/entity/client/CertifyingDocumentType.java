@@ -15,7 +15,7 @@ implements Serializable
 	private static final long serialVersionUID = -180896188881971028L;
 
 	@Id
-	@Column(name = "name")
+	@Column(name = "name", unique = true, nullable = false, length = 20) 
 	private String name;
 	
 	public CertifyingDocumentType() {}
