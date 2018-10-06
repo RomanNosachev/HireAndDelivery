@@ -26,5 +26,35 @@
 			</div>
 		</nav>
 	</header>
+	
+	<div class="goods">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Категория</th>
+				<th>Название</th>
+				<th>Залоговая стоимость</th>
+				<th>Минимальный срок аренды</th>
+				<th>Тарифы</th>
+			</tr>
+			<tr th:each="prod : ${goods}">
+				<td th:text="${prod.id}"></td>
+				<td th:text="${prod.type.name}"></td>
+				<td th:text="${prod.name}"></td>
+				<td th:text="${prod.collateralValue}"></td>
+				<td th:text="${prod.minRentalTerm}"></td>
+				<td>
+					<table>
+						<tr th:each="tariff : ${prod.tariffs}">
+							<td th:text="${tariff.rentalPeriod}"></td>
+							<td th:text="${tariff.pricePerPeriod}"></td>
+							<td th:text="${tariff.pledgeRequired}"></td>
+						</tr>
+					</table>
+				</td>
+				
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

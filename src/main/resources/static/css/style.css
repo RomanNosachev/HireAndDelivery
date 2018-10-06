@@ -59,3 +59,22 @@ nav {
 	color: red;
 	border-bottom: 2px solid red;
 }
+
+table {
+	margin: auto;
+	width: 70%;
+	background-color: #e8eff9;
+}
+
+td, th {
+	text-align: center;
+	padding: 5px;
+}
+
+th {
+	border: 2px solid black;
+}
+
+td {
+	border: 1px dotted;
+}

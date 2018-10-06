@@ -2,6 +2,8 @@ package com.grandfather.hireAndDelivery.entity.goods;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -37,8 +40,9 @@ implements Serializable
 	@Column(name = "minRentalTerm", nullable = false)
 	private int minRentalTerm;
 	
-	@Column(name = "maxRentalTerm", nullable = false)
-	private int maxRentalTerm;
+	@ManyToMany
+	@JoinColumn(name = "tariffs")
+	private List<Tariff> tariffs;
 	
 	public Goods() {}
 	
@@ -92,13 +96,18 @@ implements Serializable
 		minRentalTerm = term;
 	}
 	
-	public int getMaxRentalTerm()
+	public List<Tariff> getTariffs()
 	{
-		return maxRentalTerm;
+		return tariffs;
 	}
 	
-	public void setMaxRentalTerm(int term)
+	public void setTariffs(List<Tariff> tariffs)
 	{
-		maxRentalTerm = term;
+		this.tariffs = tariffs;
+	}
+	
+	public void setTariffs(Tariff ... tariffs)
+	{
+		this.tariffs = Arrays.asList(tariffs);
 	}
 }
