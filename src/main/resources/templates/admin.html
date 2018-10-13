@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>H&D | Панель управления</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<a th:href="@{index}" href="index.html">
+				<img class="grapficlogo"  src="../static/img/logo.svg" th:src="@{/img/logo.svg}" alt="logo"/>
+			</a>
+		</div>
+		<nav>
+			<div class="topnav">
+				<ul>
+					<li><a th:href="@{index}" href="index.html">ГЛАВНАЯ</a></li>
+				    <li><a th:href="@{catalog}" href="catalog.html">КАТАЛОГ ТОВАРОВ</a></li>
+				    <li><a href="#">УСЛОВИЯ ЗАКАЗА И ДОСТАВКИ</a></li>
+				    <li><a href="#">О НАС</a></li>
+				    <li><a href="#">КОНТАКТЫ</a></li>
+				    <li><a href="#">УПРАВЛЕНИЕ</a></li>
+				    <li><a id="menu" href="#">&#9776;</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="createProductForm">
+			<form th:action="@{/createProduct}" action="#" method="post" th:object="${prod}">
+				<p>Категория товара:
+					<select th:field="*{type}">
+					 	<option th:each="type : ${goodsTypes}" 
+					 			th:value="${type.name}" 
+					 			th:text="${type.name}" 
+					 			th:selected="${prod.type.name}"></option> 
+					</select>
+				</p>				
+				<p>Наименование:
+					<input type="text" th:field="*{name}"></input>
+				<p>				
+				<p>Залоговая стоимость:
+					<input type="number" th:field="*{collateralValue}"></input>
+				</p>			
+				<p>Минимальный срок аренды:
+					<input type="number" th:field="*{minRentalTerm}"></input>
+				</p>
+				<p>Тарифы:
+					<select th:field="*{tariffs}" multiple="multiple">
+						<option th:each="tariff: ${tariffs}"
+								th:value="${tariff.id}"
+								th:text="${tariff.pricePerPeriod + ' рублей за ' + tariff.rentalPeriod + ' дней ' 
+								+ tariff.pledgeRequired}"
+						></option>
+					</select>
+				</p>
+				<p><input type="submit" value="Отправить"></p>
+			</form>
+		</div>
+	</header>
+</body>
+</html>

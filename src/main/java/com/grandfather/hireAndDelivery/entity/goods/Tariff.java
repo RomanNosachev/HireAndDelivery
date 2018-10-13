@@ -2,15 +2,12 @@ package com.grandfather.hireAndDelivery.entity.goods;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,18 +22,14 @@ implements Serializable
 	@Column(name = "id", unique = true, nullable = false)
 	private long id;
 	
-	@ManyToMany
-	@JoinColumn(name = "goods", nullable = false)
-	private List<Goods> goods;
-	
 	@Column(name = "rentalPeriod", nullable = false)
 	private int rentalPeriod = 1;
 	
 	@Column(name = "pricePerPeriod", nullable = false)
 	private BigDecimal pricePerPeriod;
 	
-	@Column(name = "withPledge", nullable = false)
-	private boolean withPledge = true;
+	@Column(name = "pledgeRequired", nullable = false)
+	private boolean pledgeRequired = true;
 	
 	public Tariff() {}
 
@@ -48,16 +41,6 @@ implements Serializable
 	public void setId(long id)
 	{
 		this.id = id;
-	}
-
-	public List<Goods> getGoods()
-	{
-		return goods;
-	}
-
-	public void setGoods(List<Goods> goods)
-	{
-		this.goods = goods;
 	}
 
 	public int getRentalPeriod()
@@ -80,13 +63,13 @@ implements Serializable
 		this.pricePerPeriod = pricePerPeriod;
 	}
 
-	public boolean withPledge()
+	public boolean isPledgeRequired()
 	{
-		return withPledge;
+		return pledgeRequired;
 	}
 
-	public void setPledge(boolean withPledge)
+	public void setPledgeRequired(boolean pledgeRequired)
 	{
-		this.withPledge = withPledge;
+		this.pledgeRequired = pledgeRequired;
 	}
 }

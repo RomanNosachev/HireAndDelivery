@@ -33,7 +33,7 @@ a {
 
 nav {
 	margin: auto;
-	width: 800px;
+	width: 1000px;
 	height: 100px;
 }
 
@@ -58,4 +58,31 @@ nav {
 .topnav ul li a:hover {
 	color: red;
 	border-bottom: 2px solid red;
+}
+
+table {
+	margin: auto;
+	width: 70%;
+	background-color: #f7f4f7;
+}
+
+td, th {
+	text-align: center;
+}
+
+th {
+	border: 2px solid black;
+}
+
+td {
+	border: 1px dotted;
+}
+
+.createProductForm {
+	width: 50%;
+	margin: auto;
+}
+
+select {
+	width: auto;
 }
