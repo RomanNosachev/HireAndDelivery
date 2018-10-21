@@ -32,22 +32,45 @@ public class AdminController
 	@GetMapping("/admin")
 	public String showAdminPanel(Model model, HttpSession session)
 	{
+		return "admin";
+	}
+	
+	@GetMapping("/admin/goods")
+	public String showGoodsAdminPanel(Model model, HttpSession session)
+	{
 		model.addAttribute("goodsTypes", goodsTypeRepository.findAll());
 		model.addAttribute("tariffs", tariffRepository.findAll());
+		model.addAttribute("goods", goodsRepository.findAll());
 		
 		Goods prod = new Goods();
 		prod.setType(new GoodsType());
 		prod.setCollateralValue(new BigDecimal(0));
 		model.addAttribute("prod", prod);
 		
-		return "admin";
+		return "goods";
 	}
 	
-	@PostMapping("/createProduct")
+	@PostMapping("/admin/editProduct")
+	public String editProduct(Model model, HttpSession session, @ModelAttribute(name = "prod") Goods prod)
+	{
+		goodsRepository.save(prod);
+		
+		return "redirect:/admin/goods";
+	}
+	
+	@PostMapping("/admin/deleteProduct")
+	public String deleteProduct(Model model, HttpSession session, @ModelAttribute(name = "prod") Goods goods)
+	{
+		goodsRepository.deleteById(goods.getId());
+		
+		return "redirect:/admin/goods";
+	}
+	
+	@PostMapping("/admin/createProduct")
 	public String createProduct(Model model, HttpSession session, @ModelAttribute(name = "prod") Goods prod)
 	{		
 		goodsRepository.save(prod);
 		
-		return "redirect:/admin";
+		return "redirect:/admin/goods";
 	}
 }

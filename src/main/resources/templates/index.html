@@ -9,7 +9,7 @@
 <body>
 	<header>
 		<div class="logo">
-			<a th:href="@{index}" href="index.html">
+			<a th:href="@{/index}" href="index.html">
 				<img class="grapficlogo"  src="../static/img/logo.svg" th:src="@{/img/logo.svg}" alt="logo"/>
 			</a>
 		</div>
@@ -17,11 +17,11 @@
 			<div class="topnav">
 				<ul>
 					<li><a href="#">ГЛАВНАЯ</a></li>
-				    <li><a th:href="@{catalog}" href="catalog.html">КАТАЛОГ ТОВАРОВ</a></li>
+				    <li><a th:href="@{/catalog}" href="catalog.html">КАТАЛОГ ТОВАРОВ</a></li>
 				    <li><a href="#">УСЛОВИЯ ЗАКАЗА И ДОСТАВКИ</a></li>
 				    <li><a href="#">О НАС</a></li>
 				    <li><a href="#">КОНТАКТЫ</a></li>
-				    <li><a th:href="@{admin}" href="admin.html">УПРАВЛЕНИЕ</a></li>
+				    <li><a th:href="@{/admin}" href="admin.html">УПРАВЛЕНИЕ</a></li>
 				    <li><a id="menu" href="#">&#9776;</a></li>
 				</ul>
 			</div>
